@@ -1,12 +1,9 @@
-import XCTest
 @testable import ExpectToEventuallyEqual
+import XCTest
 
+@MainActor
 final class ExpectToEventuallyEqualTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    func test_immediateMatch() throws {
+        try expectToEventuallyEqual(actual: { "abc" }, expected: "abc")
     }
 }
