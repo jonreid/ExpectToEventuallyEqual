@@ -1,2 +1,42 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+import XCTest
+
+public func expectToEventuallyEqual<T: Equatable>(
+    actual: () throws -> T,
+    expected: T,
+    timeout: TimeInterval = 1.0,
+    file: StaticString = #filePath,
+    line: UInt = #line
+) throws {
+    let runLoop = RunLoop.current
+    let timeoutDate = Date(timeIntervalSinceNow: timeout)
+
+    var lastActual = try actual()
+    var tryCount = 0
+    repeat {
+        tryCount += 1
+        if lastActual == expected {
+            return
+        }
+        runLoop.run(until: Date(timeIntervalSinceNow: 0.01))
+        lastActual = try actual()
+    } while Date().compare(timeoutDate) == .orderedAscending
+
+    XCTFail(
+        messageEventuallyEqualFailed(expected: expected, actual: lastActual, tryCount: tryCount, timeout: timeout),
+        file: file,
+        line: line
+    )
+}
+
+private func messageEventuallyEqualFailed<T>(
+    expected: T,
+    actual: T,
+    tryCount: Int,
+    timeout: TimeInterval
+) -> String {
+    "\(messageNotEqual(expected: expected, actual: actual)) after \(tryCount) tries, timing out after \(timeout) seconds"
+}
+
+public func messageNotEqual<T>(expected: T, actual: T) -> String {
+    "Expected \(String(describing: expected)), but was \(String(describing: actual))"
+}
