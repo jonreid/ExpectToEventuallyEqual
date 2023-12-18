@@ -13,21 +13,37 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
     
     func test_failureMessage() throws {
-        let options = XCTExpectedFailure.Options()
-        options.issueMatcher = { issue in
-            issue.type == .assertionFailure && issue.compactDescription.contains("Expected eventually, but was")
-        }
-        
-        try XCTExpectFailure("The correct value is never returned.",
-                             options: options) {
-            try expectToEventuallyEqual(actual: {
-                Changeling.tryAgain(returning: "never", after: 15)
-            }, expected: "eventually")
-        }
+        let failSpy = FailSpy()
+
+        try expectToEventuallyEqual(
+            actual: { Changeling.tryAgain(returning: "never", after: 15) },
+            expected: "eventually",
+            fail: failSpy.fail
+        )
+
+        XCTAssertEqual(failSpy.callCount, 1, "fail call count")
+        XCTAssertTrue(failSpy.message.hasPrefix("Expected eventually, but was nope after "))
+        XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"))
+        XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
+        XCTAssertEqual(failSpy.line, 18, "line")
     }
 }
 
-class Changeling {
+private class FailSpy {
+    var callCount = 0
+    var message = ""
+    var file: String = ""
+    var line: UInt = 0
+
+    func fail(_ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+        callCount += 1
+        self.message = message
+        self.file = file.description
+        self.line = line
+    }
+}
+
+private class Changeling {
     static var tries = 0
     
     static func tryAgain(returning: String, after: Int) -> String {

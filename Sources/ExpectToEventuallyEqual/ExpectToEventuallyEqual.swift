@@ -5,7 +5,8 @@ public func expectToEventuallyEqual<T: Equatable>(
     expected: T,
     timeout: TimeInterval = 1.0,
     file: StaticString = #filePath,
-    line: UInt = #line
+    line: UInt = #line,
+    fail: (String, StaticString, UInt) -> Void = XCTFail
 ) throws {
     let runLoop = RunLoop.current
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
@@ -21,10 +22,10 @@ public func expectToEventuallyEqual<T: Equatable>(
         lastActual = try actual()
     } while Date().compare(timeoutDate) == .orderedAscending
 
-    XCTFail(
+    fail(
         messageEventuallyEqualFailed(expected: expected, actual: lastActual, tryCount: tryCount, timeout: timeout),
-        file: file,
-        line: line
+        file,
+        line
     )
 }
 
