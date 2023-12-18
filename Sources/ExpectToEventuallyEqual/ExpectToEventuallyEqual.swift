@@ -29,15 +29,23 @@ public func expectToEventuallyEqual<T: Equatable>(
     )
 }
 
-private func messageEventuallyEqualFailed<T>(
+func messageEventuallyEqualFailed<T>(
     expected: T,
     actual: T,
     tryCount: Int,
     timeout: TimeInterval
 ) -> String {
-    "\(messageNotEqual(expected: expected, actual: actual)) after \(tryCount) tries, timing out after \(timeout) seconds"
+    "\(messageNotEqual(T.self, expected: expected, actual: actual)) after \(tryCount) tries, timing out after \(timeout) seconds"
 }
 
-public func messageNotEqual<T>(expected: T, actual: T) -> String {
-    "Expected \(String(describing: expected)), but was \(String(describing: actual))"
+func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
+    return "Expected \(describe(type, value: expected)), but was \(describe(type, value: actual))"
+}
+
+private func describe<T>(_ type: T.Type, value: T) -> String {
+    let description = String(describing: value)
+    if type != String.self {
+        return description
+    }
+    return "\"\(description)\""
 }
