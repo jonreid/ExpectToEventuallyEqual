@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 @testable import ExpectToEventuallyEqual
 import XCTest
 
