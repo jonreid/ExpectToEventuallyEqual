@@ -17,8 +17,8 @@ private func toCSyntaxString(_ unformatted: String) -> String {
     return "\"\(formattedChars.joined())\""
 }
 
-private func toCSyntax(_ ch: Character) -> String {
-    switch ch {
+private func toCSyntax(_ char: Character) -> String {
+    switch char {
     case "\"":
         return "\\\""
     case "\n":
@@ -28,6 +28,6 @@ private func toCSyntax(_ ch: Character) -> String {
     case "\t":
         return "\\t"
     default:
-        return String(ch)
+        return String(char)
     }
 }
