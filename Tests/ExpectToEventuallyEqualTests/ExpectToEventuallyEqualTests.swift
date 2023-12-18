@@ -1,3 +1,5 @@
+// ExpectToEventuallyEqual by Jon Reid, https://qualitycoding.org
+// Copyright 2023 Jonathan M. Reid. https://github.com/jonreid/ExpectToEventuallyEqual/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
 @testable import ExpectToEventuallyEqual
@@ -31,7 +33,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         XCTAssertTrue(failSpy.message.hasPrefix("Expected \"eventually\", but was \"never\" after "), failSpy.message)
         XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"), failSpy.message)
         XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
-        XCTAssertEqual(failSpy.line, 24, "line")
+        XCTAssertEqual(failSpy.line, 26, "line")
     }
 }
 
