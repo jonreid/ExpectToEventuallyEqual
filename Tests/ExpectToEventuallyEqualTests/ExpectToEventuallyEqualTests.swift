@@ -59,9 +59,9 @@ private class Changeling<T> {
         self.beforeChange = beforeChange
     }
 
-    func tryAgain(returning: T, after: Int) -> T {
+    func tryAgain(returning afterChange: T, after: Int) -> T {
         guard tries < after else {
-            return returning
+            return afterChange
         }
         tries += 1
         return beforeChange
