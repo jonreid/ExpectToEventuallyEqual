@@ -3,7 +3,7 @@
 @testable import ExpectToEventuallyEqual
 import XCTest
 
-final class DescribeTests: XCTestCase {
+final class DescribeMismatchTests: XCTestCase {
     func test_describeStringWithQuotes_enclosesInQuotes_escapingBackslashAndQuote() throws {
         XCTAssertEqual(describe(String.self, value: "a\"b"), "\"a\\\"b\"")
     }
