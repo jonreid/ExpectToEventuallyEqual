@@ -25,7 +25,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     } while Date().compare(timeoutDate) == .orderedAscending
 
     fail(
-        "\(messageNotEqual(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
+        "\(describeMismatch(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
         file,
         line
     )

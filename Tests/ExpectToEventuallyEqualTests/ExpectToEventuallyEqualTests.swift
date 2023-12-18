@@ -35,17 +35,17 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
 
     func test_message_forString() throws {
-        let message = messageNotEqual(String.self, expected: "abc", actual: "def")
+        let message = describeMismatch(String.self, expected: "abc", actual: "def")
         XCTAssertEqual(message, "Expected \"abc\", but was \"def\"")
     }
 
     func test_message_forInt() throws {
-        let message = messageNotEqual(Int.self, expected: 0, actual: 1)
+        let message = describeMismatch(Int.self, expected: 0, actual: 1)
         XCTAssertEqual(message, "Expected 0, but was 1")
     }
 
     func test_message_forOptionalInt() throws {
-        let message = messageNotEqual(Int?.self, expected: 3, actual: nil)
+        let message = describeMismatch(Int?.self, expected: 3, actual: nil)
         XCTAssertEqual(message, "Expected Optional(3), but was nil")
     }
 }
