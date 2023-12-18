@@ -60,7 +60,7 @@ private class Changeling<T> {
     }
 
     func tryAgain(returning: T, after: Int) -> T {
-        if tries >= after {
+        guard tries < after else {
             return returning
         }
         tries += 1
