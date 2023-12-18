@@ -36,4 +36,8 @@ final class DescribeMismatchTests: XCTestCase {
     func test_describeStringWithTab_enclosesInQuotes_escapingBackslash() throws {
         XCTAssertEqual(describe(String.self, value: "a\tb"), "\"a\\tb\"")
     }
+
+    func test_describeOptionalStringWithTab_enclosesInQuotes_escapingBackslash() throws {
+        XCTAssertEqual(describe(String?.self, value: "a\tb"), "Optional(\"a\\tb\")")
+    }
 }
