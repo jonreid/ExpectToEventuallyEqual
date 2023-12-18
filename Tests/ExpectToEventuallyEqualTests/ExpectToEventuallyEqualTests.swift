@@ -48,6 +48,22 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         let message = messageEventuallyEqualFailed(expected: expected, actual: actual, tryCount: 99, timeout: 0.1)
         XCTAssertEqual(message, "Expected Optional(3), but was nil after 99 tries, timing out after 0.1 seconds")
     }
+
+    func test_describeStringWithQuotes_escapesBackslashAndQuote() throws {
+        XCTAssertEqual(describe(String.self, value: "a\"b"), "\"a\\\"b\"")
+    }
+
+    func test_describeStringWithNewline_escapesBackslash() throws {
+        XCTAssertEqual(describe(String.self, value: "a\nb"), "\"a\\nb\"")
+    }
+
+    func test_describeStringWithCarriageReturn_escapesBackslash() throws {
+        XCTAssertEqual(describe(String.self, value: "a\rb"), "\"a\\rb\"")
+    }
+
+    func test_describeStringWithTab_escapesBackslash() throws {
+        XCTAssertEqual(describe(String.self, value: "a\tb"), "\"a\\tb\"")
+    }
 }
 
 private class FailSpy {
