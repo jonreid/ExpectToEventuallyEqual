@@ -33,20 +33,18 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
 
     func test_message_forString() throws {
-        let message = messageEventuallyEqualFailed(expected: "abc", actual: "def", tryCount: 99, timeout: 0.1)
-        XCTAssertEqual(message, "Expected \"abc\", but was \"def\" after 99 tries, timing out after 0.1 seconds")
+        let message = messageNotEqual(String.self, expected: "abc", actual: "def")
+        XCTAssertEqual(message, "Expected \"abc\", but was \"def\"")
     }
 
     func test_message_forInt() throws {
-        let message = messageEventuallyEqualFailed(expected: 0, actual: 1, tryCount: 99, timeout: 0.1)
-        XCTAssertEqual(message, "Expected 0, but was 1 after 99 tries, timing out after 0.1 seconds")
+        let message = messageNotEqual(Int.self, expected: 0, actual: 1)
+        XCTAssertEqual(message, "Expected 0, but was 1")
     }
 
     func test_message_forOptionalInt() throws {
-        let expected: Int? = 3
-        let actual: Int? = nil
-        let message = messageEventuallyEqualFailed(expected: expected, actual: actual, tryCount: 99, timeout: 0.1)
-        XCTAssertEqual(message, "Expected Optional(3), but was nil after 99 tries, timing out after 0.1 seconds")
+        let message = messageNotEqual(Int?.self, expected: 3, actual: nil)
+        XCTAssertEqual(message, "Expected Optional(3), but was nil")
     }
 
     func test_describeStringWithQuotes_escapesBackslashAndQuote() throws {

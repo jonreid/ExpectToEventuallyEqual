@@ -38,7 +38,7 @@ func messageEventuallyEqualFailed<T>(
     "\(messageNotEqual(T.self, expected: expected, actual: actual)) after \(tryCount) tries, timing out after \(timeout) seconds"
 }
 
-private func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
+func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
     return "Expected \(describe(type, value: expected)), but was \(describe(type, value: actual))"
 }
 
