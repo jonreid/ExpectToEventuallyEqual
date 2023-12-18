@@ -43,7 +43,7 @@ private class FailSpy {
     var file: String = ""
     var line: UInt = 0
 
-    func fail(_ message: String = "", file: StaticString = #filePath, line: UInt = #line) {
+    func fail(_ message: String, file: StaticString, line: UInt) {
         callCount += 1
         self.message = message
         self.file = file.description
