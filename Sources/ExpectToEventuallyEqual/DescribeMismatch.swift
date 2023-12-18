@@ -13,8 +13,8 @@ func describe<T>(_ type: T.Type, value: T) -> String {
 }
 
 private func toCSyntaxString(_ unformatted: String) -> String {
-    let result = unformatted.map { toCSyntax($0) }
-    return "\"\(result.joined())\""
+    let formattedChars = unformatted.map { toCSyntax($0) }
+    return "\"\(formattedChars.joined())\""
 }
 
 private func toCSyntax(_ ch: Character) -> String {
