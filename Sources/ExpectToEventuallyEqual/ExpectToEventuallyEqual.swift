@@ -23,19 +23,10 @@ public func expectToEventuallyEqual<T: Equatable>(
     } while Date().compare(timeoutDate) == .orderedAscending
 
     fail(
-        messageEventuallyEqualFailed(expected: expected, actual: lastActual, tryCount: tryCount, timeout: timeout),
+        "\(messageNotEqual(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
         file,
         line
     )
-}
-
-func messageEventuallyEqualFailed<T>(
-    expected: T,
-    actual: T,
-    tryCount: Int,
-    timeout: TimeInterval
-) -> String {
-    "\(messageNotEqual(T.self, expected: expected, actual: actual)) after \(tryCount) tries, timing out after \(timeout) seconds"
 }
 
 func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
