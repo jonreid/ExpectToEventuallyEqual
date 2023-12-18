@@ -31,7 +31,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         XCTAssertTrue(failSpy.message.hasPrefix("Expected \"eventually\", but was \"never\" after "), failSpy.message)
         XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"), failSpy.message)
         XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
-        XCTAssertEqual(failSpy.line, 22, "line")
+        XCTAssertEqual(failSpy.line, 24, "line")
     }
 
     func test_message_forString() throws {
