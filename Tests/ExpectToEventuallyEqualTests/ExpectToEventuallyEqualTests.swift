@@ -7,7 +7,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
     
     func test_eventualMatch() throws {
-        let changeling = Changeling()
+        let changeling = Changeling(beforeChange: "nope")
 
         try expectToEventuallyEqual(
             actual: { changeling.tryAgain(returning: "eventually", after: 5) },
@@ -16,7 +16,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
     
     func test_failureMessage() throws {
-        let changeling = Changeling()
+        let changeling = Changeling(beforeChange: "nope")
         let failSpy = FailSpy()
 
         try expectToEventuallyEqual(
@@ -26,8 +26,8 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         )
 
         XCTAssertEqual(failSpy.callCount, 1, "fail call count")
-        XCTAssertTrue(failSpy.message.hasPrefix("Expected eventually, but was nope after "))
-        XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"))
+        XCTAssertTrue(failSpy.message.hasPrefix("Expected eventually, but was nope after "), failSpy.message)
+        XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"), failSpy.message)
         XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
         XCTAssertEqual(failSpy.line, 22, "line")
     }
@@ -47,15 +47,20 @@ private class FailSpy {
     }
 }
 
-private class Changeling {
+private class Changeling<T> {
+    private let beforeChange: T
     private var tries = 0
-    
-    func tryAgain(returning: String, after: Int) -> String {
+
+    init(beforeChange: T) {
+        self.beforeChange = beforeChange
+    }
+
+    func tryAgain(returning: T, after: Int) -> T {
         if tries >= after {
             tries = 0
             return returning
         }
         tries += 1
-        return "nope"
+        return beforeChange
     }
 }
