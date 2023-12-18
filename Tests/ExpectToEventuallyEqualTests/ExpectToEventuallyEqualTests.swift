@@ -41,6 +41,13 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         let message = messageEventuallyEqualFailed(expected: 0, actual: 1, tryCount: 99, timeout: 0.1)
         XCTAssertEqual(message, "Expected 0, but was 1 after 99 tries, timing out after 0.1 seconds")
     }
+
+    func test_message_forOptionalInt() throws {
+        let expected: Int? = 3
+        let actual: Int? = nil
+        let message = messageEventuallyEqualFailed(expected: expected, actual: actual, tryCount: 99, timeout: 0.1)
+        XCTAssertEqual(message, "Expected Optional(3), but was nil after 99 tries, timing out after 0.1 seconds")
+    }
 }
 
 private class FailSpy {
