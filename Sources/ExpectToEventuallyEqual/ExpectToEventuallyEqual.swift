@@ -30,7 +30,3 @@ public func expectToEventuallyEqual<T: Equatable>(
         line
     )
 }
-
-func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
-    return "Expected \(describe(type, value: expected)), but was \(describe(type, value: actual))"
-}

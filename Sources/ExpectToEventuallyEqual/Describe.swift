@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: MIT
 
+func messageNotEqual<T>(_ type: T.Type, expected: T, actual: T) -> String {
+    return "Expected \(describe(type, value: expected)), but was \(describe(type, value: actual))"
+}
+
 func describe<T>(_ type: T.Type, value: T) -> String {
     let description = String(describing: value)
     if type == String.self {
