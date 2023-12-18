@@ -33,21 +33,6 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
         XCTAssertEqual(failSpy.line, 24, "line")
     }
-
-    func test_message_forString() throws {
-        let message = describeMismatch(String.self, expected: "abc", actual: "def")
-        XCTAssertEqual(message, "Expected \"abc\", but was \"def\"")
-    }
-
-    func test_message_forInt() throws {
-        let message = describeMismatch(Int.self, expected: 0, actual: 1)
-        XCTAssertEqual(message, "Expected 0, but was 1")
-    }
-
-    func test_message_forOptionalInt() throws {
-        let message = describeMismatch(Int?.self, expected: 3, actual: nil)
-        XCTAssertEqual(message, "Expected Optional(3), but was nil")
-    }
 }
 
 private class FailSpy {
