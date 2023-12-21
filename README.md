@@ -7,7 +7,7 @@ ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
 <!-- toc -->
 ## Contents
 
-  * [Checking Markdown Update](#checking-markdown-update)<!-- endToc -->
+  * [Example](#example)<!-- endToc -->
 
 ## Example
 
