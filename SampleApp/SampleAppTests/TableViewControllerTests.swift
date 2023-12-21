@@ -24,10 +24,12 @@ class TableViewControllerTests: XCTestCase {
     }
 
     func test_numberOfRows() throws {
+        // begin-snippet: test-example
         try expectToEventuallyEqual(
             actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
             expected: 2
         )
+        // end-snippet
     }
 
     func test_secondRowShowsBookTitle() throws {

@@ -7,15 +7,19 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BookCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        // begin-snippet: task
         Task {
             await viewModel.load()
             self.tableView.reloadData()
         }
+        // end-snippet
     }
 
+    // begin-snippet: number-of-rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.result.count
     }
+    // end-snippet
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
