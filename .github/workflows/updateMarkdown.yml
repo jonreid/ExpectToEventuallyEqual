@@ -1,6 +1,7 @@
 name: Update markdown snippets
 
 on:
+  workflow_dispatch:
   push:
 
 jobs:
