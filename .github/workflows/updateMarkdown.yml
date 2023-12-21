@@ -6,6 +6,8 @@ on:
 jobs:
   update-markdown-snippets:
     runs-on: windows-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Run MarkdownSnippets
