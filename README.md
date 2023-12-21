@@ -2,7 +2,8 @@
 
 <!-- toc -->
 ## Contents
-<!-- endToc -->
+
+  * [Checking Markdown Update](#checking-markdown-update)<!-- endToc -->
 
 ## Checking Markdown Update
 test
