@@ -8,7 +8,10 @@
 ## Checking Markdown Update
 
 <!-- snippet: task -->
+<!-- endSnippet -->
 
 <!-- snippet: number-of-rows -->
+<!-- endSnippet -->
 
 <!-- snippet: test-example -->
+<!-- endSnippet -->
