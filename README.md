@@ -59,6 +59,8 @@ The assertion repeatedly evaluates the `actual` closure, comparing it to the `ex
 
 ![Example failure says test_numberOfRows(): failed - Expected 2, but was 1 after 93 tries, timing out after 1.0 seconds](images/example-failure.png)
 
+There is a [SampleApp](SampleApp) you can try to see some passing tests and one failing test.
+
 ## How To Install
 
 ### Swift Package Manager
@@ -83,6 +85,8 @@ Then add it to your test target:
 
 ## Details
 
+The `actual` closure is allowed to throw exceptions.
+
 The `actual` closure and  and `expected` value must evaluate to the same `Equatable` type.
 
 The default `timeout` is 1 second. You can specify a different value.
@@ -91,7 +95,7 @@ After every comparison, the `RunLoop` runs briefly to process other events on th
 
 On failure, the assertion reports the expected value and the last actual value. If they are strings, the values are shown in double quotes with the following characters represented as escaped special characters:
 
-- \" (double quotation mark)
+- \\" (double quotation mark)
 - \n (line feed)
 - \r (carriage return)
 - \t (horizontal tab)
