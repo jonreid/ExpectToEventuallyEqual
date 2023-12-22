@@ -7,8 +7,11 @@ ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
 <!-- toc -->
 ## Contents
 
-  * [What It's For](#what-its-for)
-  * [How to Install It](#how-to-install-it)<!-- endToc -->
+  * [Example](#example)
+  * [How To Install](#how-to-install)
+    * [Swift Package Manager](#swift-package-manager)
+  * [Details](#details)
+  * [Origin](#origin)<!-- endToc -->
 
 ## Example
 
