@@ -7,9 +7,11 @@ ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
 <!-- toc -->
 ## Contents
 
-  * [Example](#example)<!-- endToc -->
+  * [Example](#example)
 
-## Example
+<!-- endToc -->
+
+## What It's For
 
 Let's say we have a table view that reads from a view model. So the view model determines the number of rows in the table:
 
@@ -54,3 +56,27 @@ try expectToEventuallyEqual(
 The assertion repeatedly evaluates the `actual` closure, comparing it to the `expected` value. As soon as they are equal, this assertion will pass. If it times out with the values remaining unequal, the assertion fails.
 
 ![Example failure says test_numberOfRows(): failed - Expected 2, but was 1 after 93 tries, timing out after 1.0 seconds](images/example-failure.png)
+
+## How to Install It
+
+Use Swift Package Manager to add ExpectToEventuallyEqual to your project.
+
+If you do this in Xcode, point to this repository, then add it to your test target.
+
+If you have a `Project.swift` file, declare the following dependency:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/jonreid/ExpectToEventuallyEqual", branch: "master"),
+],
+```
+
+Then add it to your test target:
+
+```swift
+.testTarget(
+    name: "MyTests",
+    dependencies: [
+        "ExpectToEventuallyEqual",
+    ],
+```
