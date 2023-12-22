@@ -24,7 +24,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
     viewModel.result.count
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L18-L22' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L22-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The table view controller's `viewDidLoad()` tells the view model to load, then reloads the table data. Because the `load()` is asynchronous, we await its results and wrap this inside a `Task`.
@@ -37,7 +37,7 @@ Task {
     self.tableView.reloadData()
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L10-L15' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L14-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 If this `Task` included a call to a closure, tests could wait on an `XCTestExpectation` and inject a closure which calls `fulfill()` on the expectation. So one approach to testing this is to add a completion closure that fires after the data reloads.
@@ -52,7 +52,7 @@ try expectToEventuallyEqual(
     expected: 2
 )
 ```
-<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L27-L32' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L31-L36' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The assertion repeatedly evaluates the `actual` closure, comparing it to the `expected` value. As soon as they are equal, this assertion will pass. If it times out with the values remaining unequal, the assertion fails.
