@@ -10,7 +10,7 @@ ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
   * [What It's For](#what-its-for)
   * [How to Install It](#how-to-install-it)<!-- endToc -->
 
-## What It's For
+## Example
 
 Let's say we have a table view that reads from a view model. So the view model determines the number of rows in the table:
 
@@ -56,11 +56,9 @@ The assertion repeatedly evaluates the `actual` closure, comparing it to the `ex
 
 ![Example failure says test_numberOfRows(): failed - Expected 2, but was 1 after 93 tries, timing out after 1.0 seconds](images/example-failure.png)
 
-## How to Install It
+## How To Install
 
-Use Swift Package Manager to add ExpectToEventuallyEqual to your project.
-
-If you do this in Xcode, point to this repository, then add it to your test target.
+### Swift Package Manager
 
 If you have a `Project.swift` file, declare the following dependency:
 
@@ -79,3 +77,25 @@ Then add it to your test target:
         "ExpectToEventuallyEqual",
     ],
 ```
+
+### Details
+
+The `actual` closure and  and `expected` value must evaluate to the same `Equatable` type.
+
+The default `timeout` is 1 second. You can specify a different value.
+
+After every comparison, the `RunLoop` runs briefly to process other events on the thread.
+
+On failure, the assertion reports the expected value and the last actual value. If they are strings, the values are shown in double quotes with the following characters represented as escaped special characters:
+
+- \" (double quotation mark)
+- \n (line feed)
+- \r (carriage return)
+- \t (horizontal tab)
+
+### Origin
+
+Jon Reid and Steven Baker created this assertion while teaching an iOS workshop together.
+
+- Jon is the author of _[iOS Unit Testing by Example](https://iosunittestingbyexample.com)._ His website is [Quality Coding](https://qualitycoding.org).
+- Steven is the inventor of RSpec and the describe/it pattern of testing. His website is [stevenrbaker.com](https://stevenrbaker.com).
