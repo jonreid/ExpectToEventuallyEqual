@@ -78,7 +78,7 @@ Then add it to your test target:
     ],
 ```
 
-### Details
+## Details
 
 The `actual` closure and  and `expected` value must evaluate to the same `Equatable` type.
 
@@ -93,7 +93,7 @@ On failure, the assertion reports the expected value and the last actual value. 
 - \r (carriage return)
 - \t (horizontal tab)
 
-### Origin
+## Origin
 
 Jon Reid and Steven Baker created this assertion while teaching an iOS workshop together.
 
