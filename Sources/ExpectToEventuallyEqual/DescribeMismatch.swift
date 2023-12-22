@@ -9,17 +9,17 @@ func describeMismatch<T>(_ type: T.Type, expected: T, actual: T) -> String {
 func describe<T>(_ type: T.Type, value: T) -> String {
     let description = String(describing: value)
     if type == String.self {
-        return toCSyntaxString(description)
+        return toFormattedString(description)
     }
     return description
 }
 
-private func toCSyntaxString(_ unformatted: String) -> String {
-    let formattedChars = unformatted.map { toCSyntax($0) }
+private func toFormattedString(_ unformatted: String) -> String {
+    let formattedChars = unformatted.map { escapeSpecialCharacter($0) }
     return "\"\(formattedChars.joined())\""
 }
 
-private func toCSyntax(_ char: Character) -> String {
+private func escapeSpecialCharacter(_ char: Character) -> String {
     switch char {
     case "\"":
         return "\\\""
