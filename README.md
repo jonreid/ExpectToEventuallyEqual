@@ -1,6 +1,8 @@
 # ExpectToEventuallyEqual
 
 [![Build](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml/badge.svg)](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml)
+[![Mastodon Follow](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
+)](https://iosdev.space/@qcoding)
 
 ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
 
