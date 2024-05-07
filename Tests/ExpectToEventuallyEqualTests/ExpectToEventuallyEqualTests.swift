@@ -26,12 +26,13 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         try expectToEventuallyEqual(
             actual: { changeling.tryAgain(returning: "never", after: 15) },
             expected: "eventually",
+            timeout: 0.4,
             fail: failSpy.fail
         )
 
         XCTAssertEqual(failSpy.callCount, 1, "fail call count")
         XCTAssertTrue(failSpy.message.hasPrefix("Expected \"eventually\", but was \"never\" after "), failSpy.message)
-        XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 1.0 seconds"), failSpy.message)
+        XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 0.4 seconds"), failSpy.message)
         XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
         XCTAssertEqual(failSpy.line, 26, "line")
     }
