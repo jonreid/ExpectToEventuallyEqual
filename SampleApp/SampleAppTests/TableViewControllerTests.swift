@@ -10,6 +10,7 @@ class TableViewControllerTests: XCTestCase {
     private var sut: TableViewController!
     private var tableDataSource: UITableViewDataSource!
 
+    @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
         let fakeSearchProvider = FakeSearchProvider()
@@ -27,6 +28,7 @@ class TableViewControllerTests: XCTestCase {
         try super.tearDownWithError()
     }
 
+    @MainActor
     func test_numberOfRows() throws {
         // begin-snippet: test-example
         try expectToEventuallyEqual(
@@ -36,6 +38,7 @@ class TableViewControllerTests: XCTestCase {
         // end-snippet
     }
 
+    @MainActor
     func test_secondRowShowsBookTitle() throws {
         try expectToEventuallyEqual(
             actual: { cellForRow(1).textLabel?.text ?? "" },
@@ -43,6 +46,7 @@ class TableViewControllerTests: XCTestCase {
         )
     }
 
+    @MainActor
     func test_secondRowShowsBookAuthor_demonstratingFailure() throws {
         try expectToEventuallyEqual(
             actual: { cellForRow(1).detailTextLabel?.text ?? "" },
@@ -50,6 +54,7 @@ class TableViewControllerTests: XCTestCase {
         )
     }
 
+    @MainActor
     func cellForRow(_ row: Int) -> UITableViewCell {
         let indexPath = IndexPath(row: row, section: 0)
         return tableDataSource.tableView(sut.tableView, cellForRowAt: indexPath)
