@@ -55,7 +55,7 @@ try expectToEventuallyEqual(
     expected: 2
 )
 ```
-<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L31-L36' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L33-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The assertion repeatedly evaluates the `actual` closure, comparing it to the `expected` value. As soon as they are equal, this assertion will pass. If it times out with the values remaining unequal, the assertion fails.
