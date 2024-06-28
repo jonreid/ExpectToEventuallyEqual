@@ -41,7 +41,7 @@ extension DisplayResult {
         case let .book(title, _):
             return title
         case .error:
-            return "An error occcurred"
+            return "An error occurred"
         case .loading:
             return "Loading…"
         case .noMatch:
