@@ -4,7 +4,7 @@
 
 class ViewModel {
     private let searchAPI: SearchProviding
-    private(set) var result: [DisplayResult] = [.loading]
+    private(set) var results: [DisplayResult] = [.loading]
 
     init(_ searchAPI: SearchProviding) {
         self.searchAPI = searchAPI
@@ -12,12 +12,12 @@ class ViewModel {
 
     func load() async {
         guard let response = try? await searchAPI.searchForBooks(term: "historicism") else {
-            result = [.error]
+            results = [.error]
             return
         }
-        result = response.results.map { $0.toDisplayResult }
-        if result.isEmpty {
-            result = [.noMatch]
+        results = response.results.map { $0.toDisplayResult }
+        if results.isEmpty {
+            results = [.noMatch]
         }
     }
 }

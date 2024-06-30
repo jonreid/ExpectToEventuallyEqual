@@ -21,14 +21,14 @@ class TableViewController: UITableViewController {
 
     // begin-snippet: number-of-rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.result.count
+        viewModel.results.count
     }
     // end-snippet
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        guard indexPath.row < viewModel.result.count else { return cell }
-        let result = viewModel.result[indexPath.row]
+        guard indexPath.row < viewModel.results.count else { return cell }
+        let result = viewModel.results[indexPath.row]
         cell.textLabel?.text = result.text
         cell.detailTextLabel?.text = result.detailText
         return cell
