@@ -24,7 +24,7 @@ Let's say we have a table view that reads from a view model. So the view model d
 <a id='snippet-number-of-rows'></a>
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.result.count
+    viewModel.results.count
 }
 ```
 <sup><a href='/SampleApp/SampleApp/TableViewController.swift#L22-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
