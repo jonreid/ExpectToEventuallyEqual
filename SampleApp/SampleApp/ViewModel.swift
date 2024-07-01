@@ -2,7 +2,7 @@
 // Copyright 2023 Jonathan M. Reid. https://github.com/jonreid/ExpectToEventuallyEqual/blob/main/LICENSE.txt
 // SPDX-License-Identifier: MIT
 
-class ViewModel {
+actor ViewModel {
     private let searchAPI: SearchProviding
     private(set) var results: [DisplayResult] = [.loading]
 
