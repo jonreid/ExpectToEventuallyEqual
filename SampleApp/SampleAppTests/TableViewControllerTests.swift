@@ -13,8 +13,7 @@ class TableViewControllerTests: XCTestCase {
     @MainActor
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let fakeSearchProvider = FakeSearchProvider()
-        fakeSearchProvider.stubSuccess(book1, book2)
+        let fakeSearchProvider = FakeSearchProvider(searchResults: book1, book2)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: String(describing: TableViewController.self))
         sut.viewModel = ViewModel(fakeSearchProvider)
