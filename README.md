@@ -24,10 +24,10 @@ Let's say we have a table view that reads from a view model. So the view model d
 <a id='snippet-number-of-rows'></a>
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.results.count
+    results.count
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L22-L26' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L23-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The table view controller's `viewDidLoad()` tells the view model to load, then reloads the table data. Because the `load()` is asynchronous, we await its results and wrap this inside a `Task`.
@@ -36,11 +36,11 @@ The table view controller's `viewDidLoad()` tells the view model to load, then r
 <a id='snippet-task'></a>
 ```swift
 Task {
-    await viewModel.load()
+    results = await viewModel.load()
     self.tableView.reloadData()
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L14-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L15-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 If this `Task` included a call to a closure, tests could wait on an `XCTestExpectation` and inject a closure which calls `fulfill()` on the expectation. So one approach to testing this is to add a completion closure that fires after the data reloads.
@@ -55,7 +55,7 @@ try expectToEventuallyEqual(
     expected: 2
 )
 ```
-<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L33-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L32-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The assertion repeatedly evaluates the `actual` closure, comparing it to the `expected` value. As soon as they are equal, this assertion will pass. If it times out with the values remaining unequal, the assertion fails.
