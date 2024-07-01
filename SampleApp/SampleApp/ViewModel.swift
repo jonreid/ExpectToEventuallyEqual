@@ -4,7 +4,6 @@
 
 actor ViewModel {
     private let searchAPI: SearchProviding
-    private(set) var results: [DisplayResult] = [.loading]
 
     init(_ searchAPI: SearchProviding) {
         self.searchAPI = searchAPI
