@@ -1,6 +1,7 @@
 # ExpectToEventuallyEqual
 
 [![Build](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml/badge.svg)](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjonreid%2FExpectToEventuallyEqual%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/jonreid/ExpectToEventuallyEqual)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjonreid%2FExpectToEventuallyEqual%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/jonreid/ExpectToEventuallyEqual)
 [![Mastodon Follow](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
 )](https://iosdev.space/@qcoding)
