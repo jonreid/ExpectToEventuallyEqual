@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol SearchProviding {
+protocol SearchProviding: Sendable {
     func searchForBooks(term: String) async throws -> SearchResponse
 }
 
