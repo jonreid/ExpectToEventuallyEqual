@@ -6,6 +6,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     lazy var viewModel = ViewModel(SearchProvider())
+    private var results: [DisplayResult] = [.loading]
     private let cellReuseIdentifier = "book"
 
     override func viewDidLoad() {
@@ -13,7 +14,7 @@ class TableViewController: UITableViewController {
         tableView.register(BookCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         // begin-snippet: task
         Task {
-            await viewModel.load()
+            results = await viewModel.load()
             self.tableView.reloadData()
         }
         // end-snippet
@@ -21,14 +22,14 @@ class TableViewController: UITableViewController {
 
     // begin-snippet: number-of-rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.results.count
+        results.count
     }
     // end-snippet
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        guard indexPath.row < viewModel.results.count else { return cell }
-        let result = viewModel.results[indexPath.row]
+        guard indexPath.row < results.count else { return cell }
+        let result = results[indexPath.row]
         cell.textLabel?.text = result.text
         cell.detailTextLabel?.text = result.detailText
         return cell

@@ -10,15 +10,15 @@ actor ViewModel {
         self.searchAPI = searchAPI
     }
 
-    func load() async {
+    func load() async -> [DisplayResult] {
         guard let response = try? await searchAPI.searchForBooks(term: "historicism") else {
-            results = [.error]
-            return
+            return [.error]
         }
-        results = response.results.map { $0.toDisplayResult }
+        let results = response.results.map { $0.toDisplayResult }
         if results.isEmpty {
-            results = [.noMatch]
+            return [.noMatch]
         }
+        return results
     }
 }
 
