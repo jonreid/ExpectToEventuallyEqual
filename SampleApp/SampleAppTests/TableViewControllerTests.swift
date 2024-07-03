@@ -47,6 +47,7 @@ class TableViewControllerTests: XCTestCase {
 
     @MainActor
     func test_secondRowShowsBookAuthor_demonstratingFailure() throws {
+        XCTExpectFailure("Demonstrate failure message")
         try expectToEventuallyEqual(
             actual: { cellForRow(1).detailTextLabel?.text ?? "" },
             expected: "Steven Baker"
