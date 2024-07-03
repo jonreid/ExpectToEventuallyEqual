@@ -8,7 +8,7 @@ import XCTest
 
 class TableViewControllerTests: XCTestCase {
     private var sut: TableViewController!
-    private var tableDataSource: UITableViewDataSource!
+    private var tableDataSource: (any UITableViewDataSource)!
 
     @MainActor
     override func setUpWithError() throws {

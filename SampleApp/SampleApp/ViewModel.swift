@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: MIT
 
 actor ViewModel {
-    private let searchAPI: SearchProviding
+    private let searchAPI: any SearchProviding
 
-    init(_ searchAPI: SearchProviding) {
+    init(_ searchAPI: any SearchProviding) {
         self.searchAPI = searchAPI
     }
 
