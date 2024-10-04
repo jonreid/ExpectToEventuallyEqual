@@ -15,6 +15,7 @@ class TableViewController: UITableViewController {
         // begin-snippet: task
         Task {
             results = await viewModel.load()
+            print("---- count: \(results.count)")
             self.tableView.reloadData()
         }
         // end-snippet

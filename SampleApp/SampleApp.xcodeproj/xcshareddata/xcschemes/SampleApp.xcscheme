@@ -29,7 +29,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:SampleAppTests.xctestplan"
+            reference = "container:SampleAppTests.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:SampleAppSwiftTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -41,6 +44,17 @@
                BlueprintIdentifier = "0FA7FEC32B3228810057FC7F"
                BuildableName = "SampleAppTests.xctest"
                BlueprintName = "SampleAppTests"
+               ReferencedContainer = "container:SampleApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0FCE366F2CAF7EBB004474A3"
+               BuildableName = "SampleAppSwiftTests.xctest"
+               BlueprintName = "SampleAppSwiftTests"
                ReferencedContainer = "container:SampleApp.xcodeproj">
             </BuildableReference>
          </TestableReference>

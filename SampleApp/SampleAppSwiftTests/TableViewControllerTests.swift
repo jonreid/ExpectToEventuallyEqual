@@ -4,42 +4,36 @@
 
 @testable import SampleApp
 import ExpectToEventuallyEqual
-import XCTest
+import Testing
+import UIKit
 
-class TableViewControllerTests: XCTestCase {
-    private var sut: TableViewController!
-    private var tableDataSource: (any UITableViewDataSource)!
+struct TableViewControllerTests {
+    private var sut: TableViewController
+    private var tableDataSource: (any UITableViewDataSource)
 
     @MainActor
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    init() {
         let fakeSearchProvider = FakeSearchProvider(searchResults: book1, book2)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: String(describing: TableViewController.self))
         sut.viewModel = ViewModel(fakeSearchProvider)
         sut.loadViewIfNeeded()
-        tableDataSource = try XCTUnwrap(sut.tableView.dataSource)
-    }
-
-    override func tearDownWithError() throws {
-        sut = nil
-        tableDataSource = nil
-        try super.tearDownWithError()
+        tableDataSource = sut.tableView.dataSource!
     }
 
     @MainActor
-    func test_numberOfRows() throws {
-        // begin-snippet: test-example
+    @Test
+    func numberOfRows() throws {
         try expectToEventuallyEqual(
             actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
             expected: 2
         )
-        // end-snippet
         print("++++ end of test")
     }
 
     @MainActor
-    func test_secondRowShowsBookTitle() throws {
+    @Test
+    func secondRowShowsBookTitle() throws {
         try expectToEventuallyEqual(
             actual: { cellForRow(1).textLabel?.text ?? "" },
             expected: "book 2"
@@ -47,8 +41,8 @@ class TableViewControllerTests: XCTestCase {
     }
 
     @MainActor
-    func test_secondRowShowsBookAuthor_FAILURE_DEMONSTRATION() throws {
-        XCTExpectFailure("Demonstrate failure message")
+    @Test
+    func secondRowShowsBookAuthor_FAILURE_DEMONSTRATION() throws {
         try expectToEventuallyEqual(
             actual: { cellForRow(1).detailTextLabel?.text ?? "" },
             expected: "Steven Baker"
