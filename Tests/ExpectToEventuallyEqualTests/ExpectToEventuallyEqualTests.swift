@@ -33,22 +33,20 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         XCTAssertEqual(failSpy.callCount, 1, "fail call count")
         XCTAssertTrue(failSpy.message.hasPrefix("Expected \"eventually\", but was \"never\" after "), failSpy.message)
         XCTAssertTrue(failSpy.message.hasSuffix(" tries, timing out after 0.4 seconds"), failSpy.message)
-        XCTAssertEqual(failSpy.file.hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
-        XCTAssertEqual(failSpy.line, 26, "line")
+        XCTAssertEqual("\(failSpy.location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
+        XCTAssertEqual(failSpy.location.line, 26, "line")
     }
 }
 
 private class FailSpy {
     var callCount = 0
     var message = ""
-    var file: String = ""
-    var line: UInt = 0
+    var location = SourceLocation(fileID: "", filePath: "", line: 0, column: 0)
 
-    func fail(_ message: String, file: StaticString, line: UInt) {
+    func fail(_ message: String, location: SourceLocation) {
         callCount += 1
         self.message = message
-        self.file = file.description
-        self.line = line
+        self.location = location
     }
 }
 

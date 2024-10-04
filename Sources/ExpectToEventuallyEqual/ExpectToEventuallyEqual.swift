@@ -8,9 +8,11 @@ public func expectToEventuallyEqual<T: Equatable>(
     actual: () throws -> T,
     expected: T,
     timeout: TimeInterval = 1.0,
-    file: StaticString = #filePath,
+    fileID: String = #fileID,
+    filePath: StaticString = #filePath,
     line: UInt = #line,
-    fail: (String, StaticString, UInt) -> Void = XCTFail
+    column: UInt = #column,
+    fail: (String, SourceLocation) -> Void = { XCTFail($0, file: $1.filePath, line: $1.line) }
 ) throws {
     let runLoop = RunLoop.current
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
@@ -28,7 +30,13 @@ public func expectToEventuallyEqual<T: Equatable>(
 
     fail(
         "\(describeMismatch(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
-        file,
-        line
+        SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     )
+}
+
+public struct SourceLocation {
+    public let fileID: String
+    public let filePath: StaticString
+    public let line: UInt
+    public let column: UInt
 }
