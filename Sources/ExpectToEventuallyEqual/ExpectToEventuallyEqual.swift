@@ -53,16 +53,24 @@ public struct SourceLocation {
 
 public struct FailureReporter {
     public static func fail(message: String, location: SourceLocation) -> Void {
-        if isXCTestAvailable() {
-            XCTFail(message, file: location.filePath, line: location.line)
-        } else {
+        if isRunningSwiftTest() {
 #if canImport(Testing)
             Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
 #endif
+        } else {
+            XCTFail(message, file: location.filePath, line: location.line)
         }
     }
 
     private static func isXCTestAvailable() -> Bool {
         NSClassFromString("XCTestCase") != nil
+    }
+
+    private static func isRunningSwiftTest() -> Bool {
+    #if canImport(Testing)
+        Test.current != nil
+    #else
+        false
+    #endif
     }
 }
