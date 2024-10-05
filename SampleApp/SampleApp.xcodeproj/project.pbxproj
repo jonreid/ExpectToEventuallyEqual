@@ -14,12 +14,13 @@
 		0FA7FECF2B322B190057FC7F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FECE2B322B190057FC7F /* TableViewController.swift */; };
 		0FA7FED12B3234A00057FC7F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FED02B3234A00057FC7F /* ViewModel.swift */; };
 		0FA7FED32B3234A80057FC7F /* SearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FED22B3234A80057FC7F /* SearchProvider.swift */; };
-		0FA7FED92B32739C0057FC7F /* ExpectToEventuallyEqual in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA7FED82B32739C0057FC7F /* ExpectToEventuallyEqual */; };
 		0FA7FEDB2B32740C0057FC7F /* FakeSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDA2B32740C0057FC7F /* FakeSearchProvider.swift */; };
 		0FA7FEDD2B3275610057FC7F /* TableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDC2B3275610057FC7F /* TableViewControllerTests.swift */; };
 		0FA7FEE12B32793A0057FC7F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEE02B32793A0057FC7F /* main.swift */; };
 		0FA7FEE22B327A9E0057FC7F /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDE2B3279150057FC7F /* TestingAppDelegate.swift */; };
-		0FCE36812CAF9C88004474A3 /* ExpectToEventuallyEqual in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCE36802CAF9C88004474A3 /* ExpectToEventuallyEqual */; };
+		8998C0E02CB1C0C1009A3E1C /* ExpectToEventuallyEqual in Frameworks */ = {isa = PBXBuildFile; productRef = 8998C0DF2CB1C0C1009A3E1C /* ExpectToEventuallyEqual */; };
+		8998C0E22CB1C0C5009A3E1C /* ExpectToEventuallyEqual in Frameworks */ = {isa = PBXBuildFile; productRef = 8998C0E12CB1C0C5009A3E1C /* ExpectToEventuallyEqual */; };
+		8998C0E52CB1C105009A3E1C /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 8998C0E42CB1C105009A3E1C /* Nimble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA7FED92B32739C0057FC7F /* ExpectToEventuallyEqual in Frameworks */,
+				8998C0E02CB1C0C1009A3E1C /* ExpectToEventuallyEqual in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCE36812CAF9C88004474A3 /* ExpectToEventuallyEqual in Frameworks */,
+				8998C0E22CB1C0C5009A3E1C /* ExpectToEventuallyEqual in Frameworks */,
+				8998C0E52CB1C105009A3E1C /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +183,7 @@
 			);
 			name = SampleAppTests;
 			packageProductDependencies = (
-				0FA7FED82B32739C0057FC7F /* ExpectToEventuallyEqual */,
+				8998C0DF2CB1C0C1009A3E1C /* ExpectToEventuallyEqual */,
 			);
 			productName = SampleAppTests;
 			productReference = 0FA7FEC42B3228810057FC7F /* SampleAppTests.xctest */;
@@ -205,7 +207,8 @@
 			);
 			name = SampleAppSwiftTests;
 			packageProductDependencies = (
-				0FCE36802CAF9C88004474A3 /* ExpectToEventuallyEqual */,
+				8998C0E12CB1C0C5009A3E1C /* ExpectToEventuallyEqual */,
+				8998C0E42CB1C105009A3E1C /* Nimble */,
 			);
 			productName = SampleAppSwiftTests;
 			productReference = 0FCE36702CAF7EBB004474A3 /* SampleAppSwiftTests.xctest */;
@@ -246,7 +249,8 @@
 			);
 			mainGroup = 0FA7FEA02B3227E10057FC7F;
 			packageReferences = (
-				0FA7FED72B32739C0057FC7F /* XCRemoteSwiftPackageReference "ExpectToEventuallyEqual" */,
+				8998C0DC2CB1C0AD009A3E1C /* XCLocalSwiftPackageReference "../../ExpectToEventuallyEqual" */,
+				8998C0E32CB1C105009A3E1C /* XCRemoteSwiftPackageReference "nimble" */,
 			);
 			productRefGroup = 0FA7FEAA2B3227E10057FC7F /* Products */;
 			projectDirPath = "";
@@ -649,27 +653,39 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		8998C0DC2CB1C0AD009A3E1C /* XCLocalSwiftPackageReference "../../ExpectToEventuallyEqual" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../ExpectToEventuallyEqual;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
-		0FA7FED72B32739C0057FC7F /* XCRemoteSwiftPackageReference "ExpectToEventuallyEqual" */ = {
+		8998C0E32CB1C105009A3E1C /* XCRemoteSwiftPackageReference "nimble" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jonreid/ExpectToEventuallyEqual";
+			repositoryURL = "https://github.com/quick/nimble";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FA7FED82B32739C0057FC7F /* ExpectToEventuallyEqual */ = {
+		8998C0DF2CB1C0C1009A3E1C /* ExpectToEventuallyEqual */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FA7FED72B32739C0057FC7F /* XCRemoteSwiftPackageReference "ExpectToEventuallyEqual" */;
+			package = 8998C0DC2CB1C0AD009A3E1C /* XCLocalSwiftPackageReference "../../ExpectToEventuallyEqual" */;
 			productName = ExpectToEventuallyEqual;
 		};
-		0FCE36802CAF9C88004474A3 /* ExpectToEventuallyEqual */ = {
+		8998C0E12CB1C0C5009A3E1C /* ExpectToEventuallyEqual */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FA7FED72B32739C0057FC7F /* XCRemoteSwiftPackageReference "ExpectToEventuallyEqual" */;
+			package = 8998C0DC2CB1C0AD009A3E1C /* XCLocalSwiftPackageReference "../../ExpectToEventuallyEqual" */;
 			productName = ExpectToEventuallyEqual;
+		};
+		8998C0E42CB1C105009A3E1C /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8998C0E32CB1C105009A3E1C /* XCRemoteSwiftPackageReference "nimble" */;
+			productName = Nimble;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
