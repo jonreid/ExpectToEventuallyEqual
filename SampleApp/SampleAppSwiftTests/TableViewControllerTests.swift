@@ -5,6 +5,7 @@
 @testable import SampleApp
 import ExpectToEventuallyEqual
 import Testing
+import Nimble
 import UIKit
 
 struct TableViewControllerTests {
@@ -28,6 +29,22 @@ struct TableViewControllerTests {
             actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
             expected: 2
         )
+        print("++++ end of test")
+    }
+
+    @MainActor
+    @Test
+    func numberOfRowsNimbleSync() async throws {
+        // this fails (it uses basically the same logic as ExpectToEventuallyEqual)
+        expect(tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0)).toEventually(equal(2))
+        print("++++ end of test")
+    }
+
+    @MainActor
+    @Test
+    func numberOfRowsNimbleAsync() async throws {
+        // this passes (it uses Task.yield instead of the runloop)
+        await expect(tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0)).toEventually(equal(2))
         print("++++ end of test")
     }
 

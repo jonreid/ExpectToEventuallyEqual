@@ -1,13 +1,31 @@
 {
-  "originHash" : "94248a17dfbc1b3941f68c1aa85a28912c1561e2ece4e96a260f536b5ddf89d7",
+  "originHash" : "2426e22caca32bfbcd4a41060182a0b6d3226196ad7e776e685b1376588347e2",
   "pins" : [
     {
-      "identity" : "expecttoeventuallyequal",
+      "identity" : "cwlcatchexception",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jonreid/ExpectToEventuallyEqual",
+      "location" : "https://github.com/mattgallagher/CwlCatchException.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "f72d3a72d4122e71dbb082db21897b39cfe6bbf7"
+        "revision" : "07b2ba21d361c223e25e3c1e924288742923f08c",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "cwlpreconditiontesting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+      "state" : {
+        "revision" : "0139c665ebb45e6a9fbdb68aabfd7c39f3fe0071",
+        "version" : "2.2.2"
+      }
+    },
+    {
+      "identity" : "nimble",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/quick/nimble",
+      "state" : {
+        "revision" : "cecacf00ddf36c1efff8d14beb65087f2a676be9",
+        "version" : "13.5.0"
       }
     }
   ],
