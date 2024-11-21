@@ -28,7 +28,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
     results.count
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L23-L27' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L24-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-number-of-rows' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The table view controller's `viewDidLoad()` tells the view model to load, then reloads the table data. Because the `load()` is asynchronous, we await its results and wrap this inside a `Task`.
@@ -38,10 +38,11 @@ The table view controller's `viewDidLoad()` tells the view model to load, then r
 ```swift
 Task {
     results = await viewModel.load()
+    print("---- count: \(results.count)")
     self.tableView.reloadData()
 }
 ```
-<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L15-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleApp/TableViewController.swift#L15-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-task' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 If this `Task` included a call to a closure, tests could wait on an `XCTestExpectation` and inject a closure which calls `fulfill()` on the expectation. So one approach to testing this is to add a completion closure that fires after the data reloads.
