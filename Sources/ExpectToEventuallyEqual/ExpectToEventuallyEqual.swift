@@ -4,10 +4,6 @@
 
 import XCTest
 
-#if canImport(Testing)
-import Testing
-#endif
-
 public func expectToEventuallyEqual<T: Equatable>(
     actual: () throws -> T,
     expected: T,
@@ -16,7 +12,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    fail: (String, SourceLocation) -> Void = FailureReporter.fail
+    fail: (String, SourceLocation) -> Void = { XCTFail($0, file: $1.filePath, line: $1.line) }
 ) throws {
     let runLoop = RunLoop.current
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
@@ -43,26 +39,4 @@ public struct SourceLocation {
     public let filePath: StaticString
     public let line: UInt
     public let column: UInt
-
-#if canImport(Testing)
-    public func toTestingSourceLocation() -> Testing.SourceLocation {
-        Testing.SourceLocation(fileID: fileID, filePath: "\(filePath)", line: Int(line), column: Int(column))
-    }
-#endif
-}
-
-public struct FailureReporter {
-    public static func fail(message: String, location: SourceLocation) -> Void {
-        if isXCTestAvailable() {
-            XCTFail(message, file: location.filePath, line: location.line)
-        } else {
-#if canImport(Testing)
-            Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
-#endif
-        }
-    }
-
-    private static func isXCTestAvailable() -> Bool {
-        NSClassFromString("XCTestCase") != nil
-    }
 }
