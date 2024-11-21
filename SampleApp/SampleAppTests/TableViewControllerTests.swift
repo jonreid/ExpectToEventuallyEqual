@@ -35,7 +35,6 @@ class TableViewControllerTests: XCTestCase {
             expected: 2
         )
         // end-snippet
-        print("++++ end of test")
     }
 
     @MainActor
