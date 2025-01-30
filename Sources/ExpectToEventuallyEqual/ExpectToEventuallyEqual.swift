@@ -11,8 +11,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     file: StaticString = #filePath,
     line: UInt = #line,
     fail: (String, StaticString, UInt) -> Void = XCTFail
-) throws {
-    let runLoop = RunLoop.current
+) async throws {
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
 
     var lastActual = try actual()
@@ -22,7 +21,7 @@ public func expectToEventuallyEqual<T: Equatable>(
         if lastActual == expected {
             return
         }
-        runLoop.run(until: Date(timeIntervalSinceNow: 0.01))
+        try await Task.sleep(nanoseconds: 10_000_000)
         lastActual = try actual()
     } while Date().compare(timeoutDate) == .orderedAscending
 

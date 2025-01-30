@@ -6,24 +6,24 @@
 import XCTest
 
 final class ExpectToEventuallyEqualTests: XCTestCase {
-    func test_immediateMatch() throws {
-        try expectToEventuallyEqual(actual: { "abc" }, expected: "abc")
+    func test_immediateMatch() async throws {
+        try await expectToEventuallyEqual(actual: { "abc" }, expected: "abc")
     }
 
-    func test_eventualMatch() throws {
+    func test_eventualMatch() async throws {
         let changeling = Changeling(beforeChange: "nope")
 
-        try expectToEventuallyEqual(
+        try await expectToEventuallyEqual(
             actual: { changeling.tryAgain(returning: "eventually", after: 5) },
             expected: "eventually"
         )
     }
 
-    func test_failure() throws {
+    func test_failure() async throws {
         let changeling = Changeling(beforeChange: "nope")
         let failSpy = FailSpy()
 
-        try expectToEventuallyEqual(
+        try await expectToEventuallyEqual(
             actual: { changeling.tryAgain(returning: "never", after: 15) },
             expected: "eventually",
             timeout: 0.4,
