@@ -52,7 +52,7 @@ Another approach is to check for some condition in periodic intervals. After stu
 <a id='snippet-test-example'></a>
 ```swift
 try await expectToEventuallyEqual(
-    actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
+    actual: { @MainActor in tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
     expected: 2
 )
 ```
