@@ -5,7 +5,7 @@
 import XCTest
 
 public func expectToEventuallyEqual<T: Equatable>(
-    actual: () throws -> T,
+    actual: @MainActor () throws -> T,
     expected: T,
     timeout: TimeInterval = 1.0,
     file: StaticString = #filePath,
@@ -14,7 +14,7 @@ public func expectToEventuallyEqual<T: Equatable>(
 ) async throws {
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
 
-    var lastActual = try actual()
+    var lastActual = try await actual()
     var tryCount = 0
     repeat {
         tryCount += 1
@@ -22,7 +22,7 @@ public func expectToEventuallyEqual<T: Equatable>(
             return
         }
         try await Task.sleep(nanoseconds: 10_000_000)
-        lastActual = try actual()
+        lastActual = try await actual()
     } while Date().compare(timeoutDate) == .orderedAscending
 
     fail(
