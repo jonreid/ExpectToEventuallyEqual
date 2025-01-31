@@ -6,13 +6,13 @@
 import ExpectToEventuallyEqual
 import XCTest
 
-class TableViewControllerTests: XCTestCase {
+@MainActor
+final class TableViewControllerTests: XCTestCase, Sendable {
     private var sut: TableViewController!
     private var tableDataSource: (any UITableViewDataSource)!
 
-    @MainActor
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    override func setUp() async throws {
+        try await super.setUp()
         let fakeSearchProvider = FakeSearchProvider(searchResults: book1, book2)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: String(describing: TableViewController.self))
@@ -21,35 +21,32 @@ class TableViewControllerTests: XCTestCase {
         tableDataSource = try XCTUnwrap(sut.tableView.dataSource)
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() async throws {
         sut = nil
         tableDataSource = nil
-        try super.tearDownWithError()
+        try await super.tearDown()
     }
 
-    @MainActor
-    func test_numberOfRows() throws {
+    func test_numberOfRows() async throws {
         // begin-snippet: test-example
-        try expectToEventuallyEqual(
-            actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
+        try await expectToEventuallyEqual(
+            actual: { @MainActor in tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
             expected: 2
         )
         // end-snippet
     }
 
-    @MainActor
-    func test_secondRowShowsBookTitle() throws {
-        try expectToEventuallyEqual(
-            actual: { cellForRow(1).textLabel?.text ?? "" },
+    func test_secondRowShowsBookTitle() async throws {
+        try await expectToEventuallyEqual(
+            actual: { @MainActor in cellForRow(1).textLabel?.text ?? "" },
             expected: "book 2"
         )
     }
 
-    @MainActor
-    func test_secondRowShowsBookAuthor_FAILURE_DEMONSTRATION() throws {
+    func test_secondRowShowsBookAuthor_FAILURE_DEMONSTRATION() async throws {
         XCTExpectFailure("Demonstrate failure message")
-        try expectToEventuallyEqual(
-            actual: { cellForRow(1).detailTextLabel?.text ?? "" },
+        try await expectToEventuallyEqual(
+            actual: { @MainActor in cellForRow(1).detailTextLabel?.text ?? "" },
             expected: "Steven Baker"
         )
     }

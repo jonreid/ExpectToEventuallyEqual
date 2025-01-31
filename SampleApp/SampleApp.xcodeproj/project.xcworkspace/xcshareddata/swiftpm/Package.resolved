@@ -1,4 +1,5 @@
 {
+  "originHash" : "94248a17dfbc1b3941f68c1aa85a28912c1561e2ece4e96a260f536b5ddf89d7",
   "pins" : [
     {
       "identity" : "expecttoeventuallyequal",
@@ -6,9 +7,9 @@
       "location" : "https://github.com/jonreid/ExpectToEventuallyEqual",
       "state" : {
         "branch" : "main",
-        "revision" : "a29508ae496c8fe1e297892868520090cefac32e"
+        "revision" : "064b4d04a8692de36609d16e725e04c861609a89"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
