@@ -51,12 +51,12 @@ Another approach is to check for some condition in periodic intervals. After stu
 <!-- snippet: test-example -->
 <a id='snippet-test-example'></a>
 ```swift
-try expectToEventuallyEqual(
-    actual: { tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
+try await expectToEventuallyEqual(
+    actual: { @MainActor in tableDataSource.tableView(sut.tableView, numberOfRowsInSection: 0) },
     expected: 2
 )
 ```
-<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L32-L37' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/SampleApp/SampleAppTests/TableViewControllerTests.swift#L31-L36' title='Snippet source file'>snippet source</a> | <a href='#snippet-test-example' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The assertion repeatedly evaluates the `actual` closure, comparing it to the `expected` value. As soon as they are equal, this assertion will pass. If it times out with the values remaining unequal, the assertion fails.
