@@ -9,7 +9,7 @@ import Testing
 #endif
 
 public func expectToEventuallyEqual<T: Equatable>(
-    actual: @MainActor () throws -> T,
+    actual: () async throws -> T,
     expected: T,
     timeout: TimeInterval = 1.0,
     fileID: String = #fileID,
