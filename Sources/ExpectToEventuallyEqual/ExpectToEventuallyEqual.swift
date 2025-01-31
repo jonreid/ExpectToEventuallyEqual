@@ -4,13 +4,19 @@
 
 import XCTest
 
+#if canImport(Testing)
+import Testing
+#endif
+
 public func expectToEventuallyEqual<T: Equatable>(
     actual: @MainActor () throws -> T,
     expected: T,
     timeout: TimeInterval = 1.0,
-    file: StaticString = #filePath,
+    fileID: String = #fileID,
+    filePath: StaticString = #filePath,
     line: UInt = #line,
-    fail: (String, StaticString, UInt) -> Void = XCTFail
+    column: UInt = #column,
+    fail: (String, SourceLocation) -> Void = FailureReporter.fail
 ) async throws {
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
 
@@ -27,7 +33,43 @@ public func expectToEventuallyEqual<T: Equatable>(
 
     fail(
         "\(describeMismatch(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
-        file,
-        line
+        SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     )
+}
+
+public struct SourceLocation {
+    public let fileID: String
+    public let filePath: StaticString
+    public let line: UInt
+    public let column: UInt
+
+#if canImport(Testing)
+    public func toTestingSourceLocation() -> Testing.SourceLocation {
+        Testing.SourceLocation(fileID: fileID, filePath: "\(filePath)", line: Int(line), column: Int(column))
+    }
+#endif
+}
+
+public struct FailureReporter {
+    public static func fail(message: String, location: SourceLocation) -> Void {
+        if isRunningSwiftTest() {
+#if canImport(Testing)
+            Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
+#endif
+        } else {
+            XCTFail(message, file: location.filePath, line: location.line)
+        }
+    }
+
+    private static func isXCTestAvailable() -> Bool {
+        NSClassFromString("XCTestCase") != nil
+    }
+
+    private static func isRunningSwiftTest() -> Bool {
+    #if canImport(Testing)
+        Test.current != nil
+    #else
+        false
+    #endif
+    }
 }
