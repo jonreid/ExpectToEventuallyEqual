@@ -8,6 +8,7 @@ import XCTest
 import Testing
 #endif
 
+@MainActor
 public func expectToEventuallyEqual<T: Equatable>(
     actual: () async throws -> T,
     expected: T,
