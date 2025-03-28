@@ -27,7 +27,6 @@ final class TableViewControllerTests: XCTestCase, Sendable {
         try await super.tearDown()
     }
 
-    @MainActor
     func test_numberOfRows() async throws {
         // begin-snippet: test-example
         try await expectToEventuallyEqual(
@@ -37,7 +36,6 @@ final class TableViewControllerTests: XCTestCase, Sendable {
         // end-snippet
     }
 
-    @MainActor
     func test_secondRowShowsBookTitle() async throws {
         try await expectToEventuallyEqual(
             actual: { cellForRow(1).textLabel?.text ?? "" },
@@ -45,7 +43,6 @@ final class TableViewControllerTests: XCTestCase, Sendable {
         )
     }
 
-    @MainActor
     func test_secondRowShowsBookAuthor_FAILURE_DEMONSTRATION() async throws {
         XCTExpectFailure("Demonstrate failure message")
         try await expectToEventuallyEqual(
