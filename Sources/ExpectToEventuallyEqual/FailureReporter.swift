@@ -20,10 +20,6 @@ public struct FailureReporter {
 #endif
     }
 
-    private static func isXCTestAvailable() -> Bool {
-        NSClassFromString("XCTestCase") != nil
-    }
-
     private static func isRunningSwiftTest() -> Bool {
     #if canImport(Testing)
         Test.current != nil
