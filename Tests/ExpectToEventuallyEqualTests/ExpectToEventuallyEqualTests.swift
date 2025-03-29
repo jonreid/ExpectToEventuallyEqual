@@ -38,7 +38,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
 }
 
-private class FailSpy {
+private final class FailSpy {
     private(set) var callCount = 0
     private(set) var message = ""
     private(set) var location = SourceLocation(fileID: "", filePath: "", line: 0, column: 0)
@@ -50,7 +50,7 @@ private class FailSpy {
     }
 }
 
-private class Changeling<T> {
+private final class Changeling<T> {
     private let beforeChange: T
     private var tries = 0
 
