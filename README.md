@@ -65,7 +65,7 @@ The assertion repeatedly evaluates the `actual` closure, comparing it to the `ex
 
 There is a [SampleApp](SampleApp) you can try to see some passing tests and one failing test, using both XCTest and Swift Testing.
 
-Note that any test that calls expectToEventuallyEqual must be declared `@MainActor`. This declaration can be at the test suite level.
+Note that any test that calls `expectToEventuallyEqual` must be declared `@MainActor`. This declaration can be at the test suite level.
 
 ## How To Install
 
