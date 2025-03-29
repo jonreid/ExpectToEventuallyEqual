@@ -13,7 +13,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    fail: FailureHandling = Fail()
+    failure: FailureHandling = Fail()
 ) async throws {
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
 
@@ -28,7 +28,7 @@ public func expectToEventuallyEqual<T: Equatable>(
         lastActual = try await actual()
     } while Date().compare(timeoutDate) == .orderedAscending
 
-    fail.fail(
+    failure.fail(
         message: "\(describeMismatch(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
         location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     )

@@ -27,7 +27,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
             actual: { changeling.tryAgain(returning: "never", after: 15) },
             expected: "eventually",
             timeout: 0.4,
-            fail: failSpy
+            failure: failSpy
         )
 
         XCTAssertEqual(failSpy.callCount, 1, "fail call count")
