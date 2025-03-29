@@ -8,8 +8,8 @@ import XCTest
 import Testing
 #endif
 
-public struct FailureReporter {
-    public static func fail(message: String, location: SourceLocation) -> Void {
+public enum FailureReporter {
+    public static func fail(message: String, location: SourceLocation) {
         if isRunningSwiftTest() {
 #if canImport(Testing)
             Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
@@ -21,11 +21,11 @@ public struct FailureReporter {
     }
 
     private static func isRunningSwiftTest() -> Bool {
-    #if canImport(Testing)
+#if canImport(Testing)
         Test.current != nil
-    #else
+#else
         false
-    #endif
+#endif
     }
 }
 
@@ -41,4 +41,3 @@ public struct SourceLocation {
     }
 #endif
 }
-

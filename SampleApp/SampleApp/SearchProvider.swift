@@ -25,7 +25,8 @@ enum SearchError: Error {
 struct SearchProvider: SearchProviding {
     func searchForBooks(term: String) async throws -> SearchResponse {
         guard let encodedTerm = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "https://itunes.apple.com/search?media=ebook&term=\(encodedTerm)") else {
+              let url = URL(string: "https://itunes.apple.com/search?media=ebook&term=\(encodedTerm)")
+        else {
             throw SearchError.internalError
         }
         let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url))
