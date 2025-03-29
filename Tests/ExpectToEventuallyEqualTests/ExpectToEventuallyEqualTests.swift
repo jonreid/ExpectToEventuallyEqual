@@ -40,18 +40,6 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
 }
 
-private final class FailSpy: FailureHandling {
-    private(set) var callCount = 0
-    private(set) var messages: [String] = []
-    private(set) var locations: [SourceLocation] = []
-
-    func fail(message: String, location: SourceLocation) {
-        callCount += 1
-        self.messages.append(message)
-        self.locations.append(location)
-    }
-}
-
 private final class Changeling<T> {
     private let beforeChange: T
     private var tries = 0
