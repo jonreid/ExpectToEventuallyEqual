@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F645D1A2D9661AC00CC0F65 /* TableViewControllerTests_SwiftTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F645D192D9661AC00CC0F65 /* TableViewControllerTests_SwiftTesting.swift */; };
 		0FA7FEAD2B3227E10057FC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEAC2B3227E10057FC7F /* AppDelegate.swift */; };
 		0FA7FEB42B3227E10057FC7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA7FEB22B3227E10057FC7F /* Main.storyboard */; };
 		0FA7FEB62B3227E20057FC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA7FEB52B3227E20057FC7F /* Assets.xcassets */; };
@@ -16,7 +17,7 @@
 		0FA7FED32B3234A80057FC7F /* SearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FED22B3234A80057FC7F /* SearchProvider.swift */; };
 		0FA7FED92B32739C0057FC7F /* ExpectToEventuallyEqual in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA7FED82B32739C0057FC7F /* ExpectToEventuallyEqual */; };
 		0FA7FEDB2B32740C0057FC7F /* FakeSearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDA2B32740C0057FC7F /* FakeSearchProvider.swift */; };
-		0FA7FEDD2B3275610057FC7F /* TableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDC2B3275610057FC7F /* TableViewControllerTests.swift */; };
+		0FA7FEDD2B3275610057FC7F /* TableViewControllerTests_XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDC2B3275610057FC7F /* TableViewControllerTests_XCTest.swift */; };
 		0FA7FEE12B32793A0057FC7F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEE02B32793A0057FC7F /* main.swift */; };
 		0FA7FEE22B327A9E0057FC7F /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7FEDE2B3279150057FC7F /* TestingAppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0F31891E2C30FF62007407F0 /* XcodeWarnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = XcodeWarnings.xcconfig; sourceTree = "<group>"; };
+		0F645D192D9661AC00CC0F65 /* TableViewControllerTests_SwiftTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerTests_SwiftTesting.swift; sourceTree = "<group>"; };
 		0FA7FEA92B3227E10057FC7F /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA7FEAC2B3227E10057FC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FA7FEB32B3227E10057FC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,7 +47,7 @@
 		0FA7FED02B3234A00057FC7F /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		0FA7FED22B3234A80057FC7F /* SearchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchProvider.swift; sourceTree = "<group>"; };
 		0FA7FEDA2B32740C0057FC7F /* FakeSearchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSearchProvider.swift; sourceTree = "<group>"; };
-		0FA7FEDC2B3275610057FC7F /* TableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerTests.swift; sourceTree = "<group>"; };
+		0FA7FEDC2B3275610057FC7F /* TableViewControllerTests_XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerTests_XCTest.swift; sourceTree = "<group>"; };
 		0FA7FEDE2B3279150057FC7F /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		0FA7FEE02B32793A0057FC7F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,9 +110,10 @@
 		0FA7FEC52B3228810057FC7F /* SampleAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				0FA7FEDC2B3275610057FC7F /* TableViewControllerTests.swift */,
+				0FA7FEDC2B3275610057FC7F /* TableViewControllerTests_XCTest.swift */,
 				0FA7FEDA2B32740C0057FC7F /* FakeSearchProvider.swift */,
 				0FA7FEDE2B3279150057FC7F /* TestingAppDelegate.swift */,
+				0F645D192D9661AC00CC0F65 /* TableViewControllerTests_SwiftTesting.swift */,
 			);
 			path = SampleAppTests;
 			sourceTree = "<group>";
@@ -235,8 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F645D1A2D9661AC00CC0F65 /* TableViewControllerTests_SwiftTesting.swift in Sources */,
 				0FA7FEE22B327A9E0057FC7F /* TestingAppDelegate.swift in Sources */,
-				0FA7FEDD2B3275610057FC7F /* TableViewControllerTests.swift in Sources */,
+				0FA7FEDD2B3275610057FC7F /* TableViewControllerTests_XCTest.swift in Sources */,
 				0FA7FEDB2B32740C0057FC7F /* FakeSearchProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
