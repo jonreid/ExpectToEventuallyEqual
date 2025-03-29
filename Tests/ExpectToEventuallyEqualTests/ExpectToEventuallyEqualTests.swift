@@ -39,9 +39,9 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
 }
 
 private class FailSpy {
-    var callCount = 0
-    var message = ""
-    var location = SourceLocation(fileID: "", filePath: "", line: 0, column: 0)
+    private(set) var callCount = 0
+    private(set) var message = ""
+    private(set) var location = SourceLocation(fileID: "", filePath: "", line: 0, column: 0)
 
     func fail(_ message: String, location: SourceLocation) {
         callCount += 1
