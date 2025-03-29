@@ -1,3 +1,3 @@
 #!/bin/bash
 
-swift test | xcbeautify
+swift test
