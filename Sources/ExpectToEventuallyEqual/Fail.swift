@@ -8,7 +8,7 @@ import XCTest
 import Testing
 #endif
 
-public enum FailureReporter {
+public enum Fail {
     public static func fail(message: String, location: SourceLocation) {
         if isRunningSwiftTest() {
 #if canImport(Testing)

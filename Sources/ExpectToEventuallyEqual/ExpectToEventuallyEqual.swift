@@ -13,7 +13,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     filePath: StaticString = #filePath,
     line: UInt = #line,
     column: UInt = #column,
-    fail: (String, SourceLocation) -> Void = FailureReporter.fail
+    fail: (String, SourceLocation) -> Void = Fail.fail
 ) async throws {
     let timeoutDate = Date(timeIntervalSinceNow: timeout)
 
