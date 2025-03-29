@@ -6,7 +6,7 @@
 [![Mastodon Follow](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
 )](https://iosdev.space/@qcoding)
 
-ExpectToEventuallyEqual is an XCTest assertion for asynchronous code.
+ExpectToEventuallyEqual is an assertion for asynchronous code that works with both XCTest and Swift Testing.
 
 <!-- toc -->
 ## Contents
@@ -63,7 +63,7 @@ The assertion repeatedly evaluates the `actual` closure, comparing it to the `ex
 
 ![Example failure says test_numberOfRows(): failed - Expected 2, but was 1 after 93 tries, timing out after 1.0 seconds](images/example-failure.png)
 
-There is a [SampleApp](SampleApp) you can try to see some passing tests and one failing test.
+There is a [SampleApp](SampleApp) you can try to see some passing tests and one failing test, using both XCTest and Swift Testing.
 
 ## How To Install
 
