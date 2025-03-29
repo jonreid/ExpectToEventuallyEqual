@@ -65,6 +65,8 @@ The assertion repeatedly evaluates the `actual` closure, comparing it to the `ex
 
 There is a [SampleApp](SampleApp) you can try to see some passing tests and one failing test, using both XCTest and Swift Testing.
 
+Note that any test that calls expectToEventuallyEqual must be declared `@MainActor`. This declaration can be at the test suite level.
+
 ## How To Install
 
 ### Swift Package Manager
@@ -95,7 +97,7 @@ The `actual` closure and  and `expected` value must evaluate to the same `Equata
 
 The default `timeout` is 1 second. You can specify a different value.
 
-After every comparison, the `RunLoop` runs briefly to process other events on the thread.
+After every comparison, the main dispatch queue runs briefly to process other tasks.
 
 On failure, the assertion reports the expected value and the last actual value. If they are strings, the values are shown in double quotes with the following characters represented as escaped special characters:
 
