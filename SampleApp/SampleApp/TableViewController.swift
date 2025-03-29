@@ -4,7 +4,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+final class TableViewController: UITableViewController {
     lazy var viewModel = ViewModel(SearchProvider())
     private var results: [DisplayResult] = [.loading]
     private let cellReuseIdentifier = "book"
@@ -36,7 +36,7 @@ class TableViewController: UITableViewController {
     }
 }
 
-class BookCell: UITableViewCell {
+final class BookCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
     }
