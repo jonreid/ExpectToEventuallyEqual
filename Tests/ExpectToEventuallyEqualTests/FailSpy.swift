@@ -4,7 +4,7 @@
 
 import ExpectToEventuallyEqual
 
-final class FailSpy: FailureHandling {
+final class FailSpy: Failing {
     private(set) var callCount = 0
     private(set) var messages: [String] = []
     private(set) var locations: [SourceLocation] = []

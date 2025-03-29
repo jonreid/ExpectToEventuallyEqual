@@ -8,11 +8,11 @@ import XCTest
 import Testing
 #endif
 
-public protocol FailureHandling {
+public protocol Failing {
     func fail(message: String, location: SourceLocation)
 }
 
-public struct Fail: FailureHandling {
+public struct Fail: Failing {
     public init() {}
     
     public func fail(message: String, location: SourceLocation) {
