@@ -10,14 +10,14 @@ import Testing
 
 public struct FailureReporter {
     public static func fail(message: String, location: SourceLocation) -> Void {
-        guard isRunningSwiftTest() else {
-            XCTFail(message, file: location.filePath, line: location.line)
+        if isRunningSwiftTest() {
+#if canImport(Testing)
+            Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
+#endif
             return
         }
 
-#if canImport(Testing)
-        Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
-#endif
+        XCTFail(message, file: location.filePath, line: location.line)
     }
 
     private static func isRunningSwiftTest() -> Bool {
