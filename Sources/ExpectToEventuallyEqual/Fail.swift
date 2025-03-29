@@ -8,8 +8,14 @@ import XCTest
 import Testing
 #endif
 
-public enum Fail {
-    public static func fail(message: String, location: SourceLocation) {
+public protocol FailureHandling {
+    func fail(message: String, location: SourceLocation)
+}
+
+public struct Fail: FailureHandling {
+    public init() {}
+    
+    public func fail(message: String, location: SourceLocation) {
         if isRunningSwiftTest() {
 #if canImport(Testing)
             Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
@@ -20,7 +26,7 @@ public enum Fail {
         XCTFail(message, file: location.filePath, line: location.line)
     }
 
-    private static func isRunningSwiftTest() -> Bool {
+    private func isRunningSwiftTest() -> Bool {
 #if canImport(Testing)
         Test.current != nil
 #else

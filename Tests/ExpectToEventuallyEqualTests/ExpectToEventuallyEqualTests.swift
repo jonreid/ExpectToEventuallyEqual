@@ -27,7 +27,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
             actual: { changeling.tryAgain(returning: "never", after: 15) },
             expected: "eventually",
             timeout: 0.4,
-            fail: failSpy.fail
+            fail: failSpy
         )
 
         XCTAssertEqual(failSpy.callCount, 1, "fail call count")
@@ -38,12 +38,12 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
     }
 }
 
-private final class FailSpy {
+private final class FailSpy: FailureHandling {
     private(set) var callCount = 0
     private(set) var message = ""
     private(set) var location = SourceLocation(fileID: "", filePath: "", line: 0, column: 0)
 
-    func fail(_ message: String, location: SourceLocation) {
+    func fail(message: String, location: SourceLocation) {
         callCount += 1
         self.message = message
         self.location = location
