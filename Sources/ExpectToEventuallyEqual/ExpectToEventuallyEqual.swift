@@ -53,13 +53,14 @@ public struct SourceLocation {
 
 public struct FailureReporter {
     public static func fail(message: String, location: SourceLocation) -> Void {
-        if isRunningSwiftTest() {
-#if canImport(Testing)
-            Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
-#endif
-        } else {
+        guard isRunningSwiftTest() else {
             XCTFail(message, file: location.filePath, line: location.line)
+            return
         }
+
+#if canImport(Testing)
+        Issue.record(Testing.Comment(rawValue: message), sourceLocation: location.toTestingSourceLocation())
+#endif
     }
 
     private static func isXCTestAvailable() -> Bool {
