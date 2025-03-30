@@ -5,8 +5,7 @@
 @testable import ExpectToEventuallyEqual
 import XCTest
 
-@MainActor
-final class ExpectToEventuallyEqualTests: XCTestCase, Sendable {
+final class ExpectToEventuallyEqualTests: XCTestCase {
     func test_immediateMatch() async throws {
         try await expectToEventuallyEqual(actual: { "abc" }, expected: "abc")
     }
@@ -37,7 +36,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase, Sendable {
         XCTAssertTrue(message.hasPrefix("Expected \"eventually\", but was \"never\" after "), message)
         XCTAssertTrue(message.hasSuffix(" tries, timing out after 0.4 seconds"), message)
         XCTAssertEqual("\(location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
-        XCTAssertEqual(location.line, 27, "line")
+        XCTAssertEqual(location.line, 26, "line")
     }
 }
 

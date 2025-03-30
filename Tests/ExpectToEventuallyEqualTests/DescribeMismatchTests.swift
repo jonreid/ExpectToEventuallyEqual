@@ -5,8 +5,7 @@
 @testable import ExpectToEventuallyEqual
 import XCTest
 
-@MainActor
-final class DescribeMismatchTests: XCTestCase, Sendable {
+final class DescribeMismatchTests: XCTestCase {
     func test_describeMismatch_forString() throws {
         let message = describeMismatch(String.self, expected: "abc", actual: "def")
         XCTAssertEqual(message, "Expected \"abc\", but was \"def\"")
