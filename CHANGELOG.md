@@ -1,8 +1,9 @@
-NEXT RELEASE
-------------
+Version 2.0.0
+-------------
+_10 Apr 2025_
 
-- Breaking change: function now requires @MainActor
 - Added support for Swift Testing
+- Breaking change: function now requires @MainActor
 
 
 Version 1.1.0
