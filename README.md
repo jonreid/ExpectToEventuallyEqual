@@ -75,7 +75,7 @@ If you have a `Project.swift` file, declare the following dependency:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jonreid/ExpectToEventuallyEqual", from: "1.0.0"),
+    .package(url: "https://github.com/jonreid/ExpectToEventuallyEqual", from: "2.0.0"),
 ],
 ```
 
