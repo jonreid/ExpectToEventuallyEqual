@@ -15,9 +15,13 @@ let package = Package(
             name: "ExpectToEventuallyEqual",
             targets: ["ExpectToEventuallyEqual"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/jonreid/FailKit.git", branch: "main")
+    ],
     targets: [
         .target(
-            name: "ExpectToEventuallyEqual"),
+            name: "ExpectToEventuallyEqual",
+            dependencies: ["FailKit"]),
         .testTarget(
             name: "ExpectToEventuallyEqualTests",
             dependencies: ["ExpectToEventuallyEqual"]),

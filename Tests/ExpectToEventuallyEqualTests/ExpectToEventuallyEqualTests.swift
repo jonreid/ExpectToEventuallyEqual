@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 @testable import ExpectToEventuallyEqual
+import FailKit
 import XCTest
 
 final class ExpectToEventuallyEqualTests: XCTestCase {
@@ -36,7 +37,7 @@ final class ExpectToEventuallyEqualTests: XCTestCase {
         XCTAssertTrue(message.hasPrefix("Expected \"eventually\", but was \"never\" after "), message)
         XCTAssertTrue(message.hasSuffix(" tries, timing out after 0.4 seconds"), message)
         XCTAssertEqual("\(location.filePath)".hasSuffix("/ExpectToEventuallyEqualTests.swift"), true, "file")
-        XCTAssertEqual(location.line, 26, "line")
+        XCTAssertEqual(location.line, 27, "line")
     }
 }
 

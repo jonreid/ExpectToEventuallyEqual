@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import Foundation
+import FailKit
 
 @MainActor
 public func expectToEventuallyEqual<T: Equatable>(
@@ -29,7 +30,7 @@ public func expectToEventuallyEqual<T: Equatable>(
     } while Date().compare(timeoutDate) == .orderedAscending
 
     failure.fail(
-        message: "\(describeMismatch(T.self, expected: expected, actual: lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
+        message: "Expected \(describe(expected)), but was \(describe(lastActual)) after \(tryCount) tries, timing out after \(timeout) seconds",
         location: SourceLocation(fileID: fileID, filePath: filePath, line: line, column: column)
     )
 }

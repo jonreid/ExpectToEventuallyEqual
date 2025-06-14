@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "failkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jonreid/FailKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "02015e88007b5d86286c27c919999e473adaefbe"
+      }
+    }
+  ],
+  "version" : 2
+}
