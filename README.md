@@ -3,10 +3,6 @@
 [![Build](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml/badge.svg)](https://github.com/jonreid/ExpectToEventuallyEqual/actions/workflows/build.yml)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjonreid%2FExpectToEventuallyEqual%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/jonreid/ExpectToEventuallyEqual)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjonreid%2FExpectToEventuallyEqual%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/jonreid/ExpectToEventuallyEqual)
-[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff)](https://bsky.app/profile/qualitycoding.org)
-[![Mastodon](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
-)](https://iosdev.space/@qcoding)
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UC69XtVGLRydpG7o1nkdQs8Q)](https://www.youtube.com/@QualityCoding)
 
 ExpectToEventuallyEqual is an assertion for asynchronous code that works with both XCTest and Swift Testing.
 
@@ -108,9 +104,14 @@ On failure, the assertion reports the expected value and the last actual value. 
 - \r (carriage return)
 - \t (horizontal tab)
 
-## Origin
+## About the Authors
 
 Jon Reid and Steven Baker created this assertion while teaching an iOS workshop together.
 
-- Jon is the author of _[iOS Unit Testing by Example](https://iosunittestingbyexample.com)._ His website is [Quality Coding](https://qualitycoding.org).
-- Steven is the inventor of RSpec and the describe/it pattern of testing. His website is [stevenrbaker.com](https://stevenrbaker.com).
+- Jon is the author of _[iOS Unit Testing by Example](https://iosunittestingbyexample.com)._ Find more at [Quality Coding](https://qualitycoding.org).
+- Steven is the inventor of RSpec and the describe/it pattern of testing. Find more at [stevenrbaker.com](https://stevenrbaker.com).
+
+[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff)](https://bsky.app/profile/qualitycoding.org)
+[![Mastodon](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
+)](https://iosdev.space/@qcoding)
+[![YouTube](https://img.shields.io/youtube/channel/subscribers/UC69XtVGLRydpG7o1nkdQs8Q)](https://www.youtube.com/@QualityCoding)
