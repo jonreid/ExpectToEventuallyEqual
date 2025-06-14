@@ -13,7 +13,7 @@ ExpectToEventuallyEqual is an assertion for asynchronous code that works with bo
   * [How To Install](#how-to-install)
     * [Swift Package Manager](#swift-package-manager)
   * [Details](#details)
-  * [Origin](#origin)<!-- endToc -->
+  * [About the Authors](#about-the-authors)<!-- endToc -->
 
 ## Example
 
