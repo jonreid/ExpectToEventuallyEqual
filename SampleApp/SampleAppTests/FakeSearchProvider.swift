@@ -13,6 +13,6 @@ final class FakeSearchProvider: SearchProviding {
     }
 
     func searchForBooks(term: String) async throws -> SearchResponse {
-        return stubbedResponse
+        stubbedResponse
     }
 }

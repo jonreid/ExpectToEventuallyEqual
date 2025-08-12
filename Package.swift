@@ -13,17 +13,20 @@ let package = Package(
     products: [
         .library(
             name: "ExpectToEventuallyEqual",
-            targets: ["ExpectToEventuallyEqual"]),
+            targets: ["ExpectToEventuallyEqual"]
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/jonreid/FailKit.git", from: "1.0.0")
+        .package(url: "https://github.com/jonreid/FailKit.git", from: "1.0.0"),
     ],
     targets: [
         .target(
             name: "ExpectToEventuallyEqual",
-            dependencies: ["FailKit"]),
+            dependencies: ["FailKit"]
+        ),
         .testTarget(
             name: "ExpectToEventuallyEqualTests",
-            dependencies: ["ExpectToEventuallyEqual"]),
+            dependencies: ["ExpectToEventuallyEqual"]
+        ),
     ]
 )

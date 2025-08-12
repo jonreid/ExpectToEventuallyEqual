@@ -13,7 +13,7 @@ actor ViewModel {
         guard let response = try? await searchAPI.searchForBooks(term: "historicism") else {
             return [.error]
         }
-        let results = response.results.map { $0.toDisplayResult }
+        let results = response.results.map { \.toDisplayResult }
         if results.isEmpty {
             return [.noMatch]
         }

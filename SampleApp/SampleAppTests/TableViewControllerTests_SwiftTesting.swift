@@ -11,7 +11,7 @@ import UIKit
 @Suite("TableViewController tests - Swift Testing")
 struct TableViewControllerTests_SwiftTesting {
     private let sut: TableViewController
-    private let tableDataSource: (any UITableViewDataSource)
+    private let tableDataSource: any UITableViewDataSource
 
     init() throws {
         let book1 = SearchResult(trackName: "book 1", artistName: "author 1")
