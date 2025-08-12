@@ -1,0 +1,3 @@
+--disable blankLinesBetweenScopes
+--disable sortImports
+--disable unusedArguments
