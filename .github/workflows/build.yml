@@ -23,3 +23,21 @@ jobs:
     - uses: actions/checkout@v7
     - name: Run tests
       run: ./run_tests.sh
+
+auto-merge:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: auto-merge
+        if: |
+          github.actor == 'dependabot[bot]' &&
+          github.event_name == 'pull_request'
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in token
+        run: |
+          GH_TOKEN="$GITHUB_TOKEN" ./merge_dependabot.sh
