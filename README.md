@@ -112,7 +112,5 @@ Jon Reid and Steven Baker created this assertion while teaching an iOS workshop 
 - Steven is the inventor of RSpec and the describe/it pattern of testing. Find more at [stevenrbaker.com](https://stevenrbaker.com).
 
 [![Bluesky](https://img.shields.io/bluesky/followers/qualitycoding.org)](https://bsky.app/profile/qualitycoding.org)
-[![Mastodon](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space
-)](https://iosdev.space/@qcoding)
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UC69XtVGLRydpG7o1nkdQs8Q)](https://www.youtube.com/@QualityCoding)
+[![Mastodon](https://img.shields.io/mastodon/follow/109765011064804734?domain=https%3A%2F%2Fiosdev.space)](https://iosdev.space/@qcoding)
 [![GitHub](https://img.shields.io/github/stars/jonreid)](https://github.com/jonreid)
